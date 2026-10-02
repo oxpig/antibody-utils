@@ -1,0 +1,32 @@
+# Byte-compiled / optimised files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+
+# Test and coverage artefacts
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Linters
+.ruff_cache/
+
+# Sphinx
+docs/_build/
+docs/api/generated/
+
+# Fetched at build time by scripts/fetch_blosum62.py, never tracked
+src/antibody_utils/data/BLOSUM62
+
+# Editors
+.vscode/
+.idea/

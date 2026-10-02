@@ -1,0 +1,122 @@
+[build-system]
+requires = ["uv_build>=0.11.25,<0.12.0"]
+build-backend = "uv_build"
+
+[project]
+name = "antibody-utils"
+version = "0.1.0"
+description = "Utilities for antibody sequence and structure analysis."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["LICENCE"]
+authors = [
+  { name = "Benjamin Heathcote Williams", email = "benjaminhwilliams@users.noreply.github.com" },
+]
+maintainers = [
+  { name = "Oxford Protein Informatics Group", email = "opig@stats.ox.ac.uk" },
+]
+keywords = ["antibody", "immunoglobulin", "CDR", "numbering", "bioinformatics"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+  "Typing :: Typed",
+]
+dependencies = [
+  "gemmi",
+  "numpy",
+]
+
+[project.optional-dependencies]
+numbering = ["anarcii>=2"]
+canonicals = ["platformdirs"]
+
+[project.urls]
+Documentation = "https://antibody-utils.readthedocs.io"
+Source = "https://github.com/oxpig/antibody-utils"
+Issues = "https://github.com/oxpig/antibody-utils/issues"
+
+[tool.pytest.ini_options]
+addopts = [
+  "--import-mode=importlib",
+  # Run docstring examples as tests; `conftest.py` does the same for Markdown.
+  "--doctest-modules",
+]
+testpaths = ["tests", "src", "docs", "README.md"]
+doctest_optionflags = ["NORMALIZE_WHITESPACE"]
+markers = [
+  "numbering: requires the `numbering` extra (ANARCII)",
+  "pyigclassify2: requires a licensed copy of the PyIgClassify2 data",
+]
+
+[tool.coverage.run]
+source = ["antibody_utils"]
+
+[tool.ruff]
+src = ["src", "tests"]
+line-length = 88
+lint.select = [
+  "B",   # flake8-bugbear - https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+  "BLE", # flake8-blind-except - https://docs.astral.sh/ruff/rules/#flake8-blind-except-ble
+  "C4",  # flake8-comprehensions - https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+  "D",   # pydocstyle - https://docs.astral.sh/ruff/rules/#pydocstyle-d
+  "S",   # flake8-bandit - https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+  "E",   # pycodestyle errors - https://docs.astral.sh/ruff/rules/#error-e
+  "F",   # pyflakes rules - https://docs.astral.sh/ruff/rules/#pyflakes-f
+  "W",   # pycodestyle warnings - https://docs.astral.sh/ruff/rules/#warning-w
+  "FA",  # flake8-future-annotations - https://docs.astral.sh/ruff/rules/#flake8-future-annotations-fa
+  "TID", # flake8-tidy-imports - https://docs.astral.sh/ruff/rules/#flake8-tidy-imports-tid
+  "I",   # isort - https://docs.astral.sh/ruff/rules/#isort-i
+  "UP",  # pyupgrade - https://docs.astral.sh/ruff/rules/#pyupgrade-up
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["D", "S101"] # No docstrings required; allow assert statements
+"scripts/**/*.py" = ["S310"]    # URL fetches are the point of these scripts
+"docs/**/*.py" = ["D"]
+
+[tool.bumpversion]
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = true
+sign_tags = true
+tag_name = "v{new_version}"
+tag_message = "Bump version: {current_version} → {new_version}"
+allow_dirty = false
+commit = true
+message = "Bump version: {current_version} → {new_version}"
+moveable_tags = []
+commit_args = ""
+setup_hooks = []
+pre_commit_hooks = ["uv lock", "git add uv.lock"]
+post_commit_hooks = []
+
+[dependency-groups]
+dev = [
+    "bump-my-version>=1.4.1",
+    "pre-commit>=4.6.0",
+    "pytest>=9.1.1",
+    "pytest-cov>=7",
+    "sybil>=10.1.0",
+]
+docs = [
+    "furo",
+    "myst-parser",
+    "sphinx>=8",
+    "sphinx-autodoc-typehints",
+]

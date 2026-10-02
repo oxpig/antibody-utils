@@ -1,0 +1,22 @@
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+
+# Update `pyproject.toml` and `uv.lock` in a single PR.
+multi-ecosystem-groups:
+  python:
+    schedule:
+      interval: "weekly"
+
+updates:
+  - package-ecosystem: "uv"
+    directory: "/"
+    multi-ecosystem-group: python
+    patterns: ["*"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every week.
+      interval: "weekly"
