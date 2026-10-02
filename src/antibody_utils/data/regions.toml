@@ -1,0 +1,99 @@
+# Framework and CDR boundaries for each region definition and chain.
+#
+# Each region is an inclusive range of IMGT positions (1-128).  Every
+# definition's seven regions tile positions 1-128 without gaps or overlaps.
+#
+# Definitions other than IMGT were originally specified in their own numbering
+# schemes; positions numbered in another scheme are mapped onto IMGT positions
+# through `scheme_to_imgt.json`, with corrections for the cases where the
+# schemes place insertions differently (see `antibody_utils.regions`).
+
+[imgt.H]
+fwh1 = [1, 26]
+cdrh1 = [27, 38]
+fwh2 = [39, 55]
+cdrh2 = [56, 65]
+fwh3 = [66, 104]
+cdrh3 = [105, 117]
+fwh4 = [118, 128]
+
+[imgt.L]
+fwl1 = [1, 26]
+cdrl1 = [27, 38]
+fwl2 = [39, 55]
+cdrl2 = [56, 65]
+fwl3 = [66, 104]
+cdrl3 = [105, 117]
+fwl4 = [118, 128]
+
+[kabat.H]
+fwh1 = [1, 35]
+cdrh1 = [36, 40]
+fwh2 = [41, 54]
+cdrh2 = [55, 74]
+fwh3 = [75, 106]
+cdrh3 = [107, 117]
+fwh4 = [118, 128]
+
+[kabat.L]
+fwl1 = [1, 23]
+cdrl1 = [24, 40]
+fwl2 = [41, 55]
+cdrl2 = [56, 69]
+fwl3 = [70, 104]
+cdrl3 = [105, 117]
+fwl4 = [118, 128]
+
+[chothia.H]
+fwh1 = [1, 26]
+cdrh1 = [27, 37]
+fwh2 = [38, 56]
+cdrh2 = [57, 64]
+fwh3 = [65, 106]
+cdrh3 = [107, 117]
+fwh4 = [118, 128]
+
+[chothia.L]
+fwl1 = [1, 23]
+cdrl1 = [24, 40]
+fwl2 = [41, 55]
+cdrl2 = [56, 69]
+fwl3 = [70, 104]
+cdrl3 = [105, 117]
+fwl4 = [118, 128]
+
+[contact.H]
+fwh1 = [1, 30]
+cdrh1 = [31, 40]
+fwh2 = [41, 51]
+cdrh2 = [52, 66]
+fwh3 = [67, 104]
+cdrh3 = [105, 116]
+fwh4 = [117, 128]
+
+[contact.L]
+fwl1 = [1, 35]
+cdrl1 = [36, 42]
+fwl2 = [43, 51]
+cdrl2 = [52, 68]
+fwl3 = [69, 104]
+cdrl3 = [105, 116]
+fwl4 = [117, 128]
+
+[north.H]
+fwh1 = [1, 23]
+cdrh1 = [24, 40]
+fwh2 = [41, 54]
+cdrh2 = [55, 66]
+fwh3 = [67, 104]
+cdrh3 = [105, 117]
+fwh4 = [118, 128]
+
+[north.L]
+fwl1 = [1, 23]
+cdrl1 = [24, 40]
+fwl2 = [41, 54]
+cdrl2 = [55, 69]
+fwl3 = [70, 104]
+cdrl3 = [105, 117]
+fwl4 = [118, 128]
