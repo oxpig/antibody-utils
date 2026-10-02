@@ -18,11 +18,11 @@ jobs:
         python-version: ["3.11", "3.12", "3.13", "3.14"]
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         persist-credentials: false
     - name: Set up uv
-      uses: astral-sh/setup-uv@v7
+      uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
       with:
         python-version: ${{ matrix.python-version }}
     - name: Fetch and verify the BLOSUM62 matrix from NCBI
@@ -35,11 +35,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         persist-credentials: false
     - name: Set up uv
-      uses: astral-sh/setup-uv@v7
+      uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
     - name: Fetch and verify the BLOSUM62 matrix from NCBI
       run: uv run --no-project python scripts/fetch_blosum62.py
     - name: Install with the numbering extra, using CPU-only PyTorch wheels
@@ -54,11 +54,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         persist-credentials: false
     - name: Set up uv
-      uses: astral-sh/setup-uv@v7
+      uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
     - name: Run pre-commit
       run: uvx pre-commit run --all-files --show-diff-on-failure
 
@@ -67,12 +67,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         persist-credentials: false
     - name: Set up uv
-      uses: astral-sh/setup-uv@v7
+      uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7.6.0
     - name: Fetch and verify the BLOSUM62 matrix from NCBI
       run: uv run --no-project python scripts/fetch_blosum62.py
     - name: Build the docs, treating warnings as errors
       run: uv run --group docs sphinx-build -W --keep-going -b html docs docs/_build/html
+
+  # The single check required by the branch ruleset, so that changing the job
+  # matrix never requires changing the ruleset.  Add any new job to `needs`.
+  all-checks:
+    name: All checks
+    if: always()
+    needs: [tests, tests-numbering, pre-commit, docs]
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Fail unless every job succeeded
+      if: >-
+        contains(needs.*.result, 'failure')
+        || contains(needs.*.result, 'cancelled')
+        || contains(needs.*.result, 'skipped')
+      run: exit 1
