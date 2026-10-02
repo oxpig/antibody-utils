@@ -1,3 +1,5 @@
+import dataclasses
+
 import gemmi
 import pytest
 
@@ -5,8 +7,17 @@ from antibody_utils.numbering import Chain, Position, Scheme, parse_chain_positi
 from antibody_utils.numbering.positions import _CaseInsensitiveStrEnum
 
 
-def test_space_means_no_insertion():
-    assert Position(52, " ") == Position(52) == Position(52, "")
+@pytest.mark.parametrize("insertion", ["", " ", "  ", "\t"])
+def test_whitespace_means_no_insertion(insertion):
+    assert Position(52, insertion) == Position(52)
+    assert Position(52, insertion).insertion == ""
+
+
+def test_positions_are_immutable():
+    position = Position(52)
+    with pytest.raises(dataclasses.FrozenInstanceError):
+        position.insertion = " "  # type: ignore[misc]
+    assert dataclasses.replace(position, insertion=" ").insertion == ""
 
 
 @pytest.mark.parametrize("insertion", ["a", "AB", "1", "-"])

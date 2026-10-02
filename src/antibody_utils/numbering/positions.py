@@ -69,8 +69,9 @@ class Position:
 
     Args:
         number: The residue number.
-        insertion: The insertion code: an upper-case letter, or `""` (or `" "`)
-            for none.
+        insertion: The insertion code: an upper-case letter, or `""` for none.
+            Whitespace, such as the single space used by other tools, also
+            means none.
 
     Raises:
         ValueError: If the insertion code is not a single letter.
@@ -86,7 +87,7 @@ class Position:
 
     def __post_init__(self) -> None:
         """Normalise and validate the insertion code."""
-        if self.insertion == " ":
+        if not self.insertion.strip():
             object.__setattr__(self, "insertion", "")
         if self.insertion and not (
             len(self.insertion) == 1 and "A" <= self.insertion <= "Z"
