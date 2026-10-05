@@ -10,6 +10,7 @@ run; ```` ```python ```` blocks are illustrative and are not executed.
 
 from collections.abc import Iterable
 from doctest import NORMALIZE_WHITESPACE
+from importlib.util import find_spec
 
 from sybil import Document, Region, Sybil
 from sybil.evaluators.doctest import DocTestEvaluator
@@ -44,6 +45,11 @@ class PyconParser:
                 region.adjust(block, source)
                 yield region
 
+
+# The ANARCII wrapper's doctests need the `numbering` extra.
+collect_ignore = (
+    [] if find_spec("anarcii") else ["src/antibody_utils/numbering/anarcii.py"]
+)
 
 pytest_collect_file = Sybil(
     parsers=[PyconParser(doctest_optionflags=NORMALIZE_WHITESPACE), SkipParser()],
