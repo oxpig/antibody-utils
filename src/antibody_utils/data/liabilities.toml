@@ -1,0 +1,79 @@
+# Sequence liabilities: motifs that may affect an antibody's developability.
+#
+# Each liability is a regular expression, searched for in each chain's numbered
+# variable-domain sequence.  A match counts if its first residue lies in one of
+# the liability's `regions`: region names or groups (see
+# `antibody_utils.regions.REGION_GROUPS`) under the North definition, or the
+# position sets in `[positions]`.  All positions are IMGT-numbered.
+#
+# Optional keys:
+#   ignore_positions      Matches starting at these positions don't count.
+#   requires_both_chains  Count only if both the heavy and the light chain have
+#                         a match.
+
+[positions]
+verniers.H = ["2", "28", "29", "54", "55", "78", "88", "105", "106", "118"]
+verniers.L = [
+  "4", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "41", "42",
+  "52", "53", "55", "84", "94", "118",
+]
+nterminus.H = ["1"]
+nterminus.L = ["1"]
+
+[[liability]]
+name = "Unpaired Cys (C)"
+regions = ["fv"]
+motif = "C"
+# The conserved disulphide-bonded cysteines.
+ignore_positions = ["23", "104"]
+
+[[liability]]
+name = "N-linked glycosylation (NXS/T X not P)"
+regions = ["fv"]
+motif = "N[^P][ST]"
+
+[[liability]]
+name = "Met oxidation (M)"
+regions = ["cdrs", "verniers"]
+motif = "M"
+
+[[liability]]
+name = "Trp oxidation (W)"
+regions = ["cdrs", "verniers"]
+motif = "W"
+
+[[liability]]
+name = "Asn deamidation (NG NS NT)"
+regions = ["cdrs", "verniers"]
+motif = "N[GST]"
+
+[[liability]]
+name = "Asp isomerisation (DG DS DT DD DH)"
+regions = ["cdrs", "verniers"]
+motif = "D[GSTDH]"
+
+[[liability]]
+name = "Lysine Glycation (KE KD EK ED)"
+regions = ["cdrs", "verniers"]
+motif = "KE|KD|EK|ED"
+
+[[liability]]
+name = "N-terminal glutamate (VH and VL) (E)"
+regions = ["nterminus"]
+motif = "E"
+requires_both_chains = true
+
+[[liability]]
+name = "Integrin binding (RGD RYD LDV)"
+regions = ["fv"]
+motif = "RGD|RYD|LDV"
+
+[[liability]]
+name = "CD11c/CD18 binding (GPR)"
+regions = ["fv"]
+motif = "GPR"
+
+[[liability]]
+name = "Fragmentation (DP)"
+regions = ["cdrs", "verniers"]
+motif = "DP"
