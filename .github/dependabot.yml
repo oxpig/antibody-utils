@@ -3,17 +3,17 @@
 
 version: 2
 
-# Update `pyproject.toml` and `uv.lock` in a single PR.
-multi-ecosystem-groups:
-  python:
-    schedule:
-      interval: "weekly"
-
 updates:
   - package-ecosystem: "uv"
     directory: "/"
-    multi-ecosystem-group: python
-    patterns: ["*"]
+    schedule:
+      interval: "weekly"
+    # Group all Python dependency updates into one PR.  The uv updater changes
+    # `pyproject.toml` and `uv.lock` together.  (A `multi-ecosystem-groups`
+    # group didn't respond to `@dependabot rebase` or `recreate`.)
+    groups:
+      python:
+        patterns: ["*"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
