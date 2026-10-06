@@ -1,0 +1,114 @@
+# ABangle: VH/VL orientation angles.
+#
+# Dunbar J, Fuchs A, Shi J and Deane CM, "ABangle: characterising the VH-VL
+# orientation in antibodies", Protein Eng Des Sel 26:611–620 (2013),
+# https://doi.org/10.1093/protein/gzt020
+#
+# Ported from ABangle as implemented in SAbDab's legacy ABDB.  Each domain's
+# coordinate frame is fixed by superposing a consensus domain on to the CA atoms
+# of a "core set" of framework positions, which vary least in structure.
+#
+# The values come from ABangle's data files (consensus_H.pdb, consensus_L.pdb,
+# pcH.txt, pcL.txt, Hcoresetfw.txt and Lcoresetfw.txt).  These files are
+# identical in OPIG's ABangle repository (oxpig/abangle), which is released
+# under the BSD 3-Clause licence, copyright (c) 2023, Oxford Protein Informatics
+# Group.
+#
+# Positions are those of the original definition, in Chothia numbering, with
+# their IMGT equivalents.  Coordinates are in angstroms.
+
+[H]
+# In the consensus frame: two unit vectors in the plane that ABangle fits
+# to the domain, and a reference point (from pcH.txt).
+plane_vectors = [[0.9525187, -0.1371821, 0.2718256], [-0.117058, 0.659152, 0.7428432]]
+point = [-2.691829, -3.847092, 1.196887]
+# The domain's end of the separation vector C is
+# point + a * plane_vectors[0] + b * plane_vectors[1], with [a, b] =
+separation = [-5.0, 0.5]
+
+# The core set: CA coordinates of the consensus H domain (from
+# consensus_H.pdb), by Chothia position, and the IMGT equivalent of each.
+[H.core]
+"11" = { imgt = 12, ca = [-8.211, 10.829, -0.397] }
+"12" = { imgt = 13, ca = [-6.508, 11.483, -3.709] }
+"17" = { imgt = 18, ca = [0.194, 10.094, -6.653] }
+"19" = { imgt = 20, ca = [2.891, 7.587, -0.859] }
+"20" = { imgt = 21, ca = [2.072, 5.235, 1.964] }
+"21" = { imgt = 22, ca = [4.382, 4.328, 4.815] }
+"22" = { imgt = 23, ca = [4.725, 1.273, 7.009] }
+"23" = { imgt = 24, ca = [6.624, 1.644, 10.254] }
+"24" = { imgt = 25, ca = [7.969, -1.531, 11.771] }
+"25" = { imgt = 26, ca = [8.802, -2.17, 15.367] }
+"35" = { imgt = 40, ca = [5.223, -6.944, 1.165] }
+"36" = { imgt = 41, ca = [2.308, -4.777, 0.18] }
+"37" = { imgt = 42, ca = [-1.118, -6.306, -0.354] }
+"38" = { imgt = 43, ca = [-4.305, -4.565, -1.378] }
+"39" = { imgt = 44, ca = [-7.946, -5.334, -0.837] }
+"45" = { imgt = 50, ca = [-6.74, -9.753, -1.644] }
+"46" = { imgt = 51, ca = [-4.122, -8.869, -4.236] }
+"47" = { imgt = 52, ca = [-0.352, -9.005, -3.798] }
+"68" = { imgt = 77, ca = [7.48, 1.71, -6.462] }
+"69" = { imgt = 78, ca = [8.5, 0.123, -3.189] }
+"70" = { imgt = 79, ca = [11.35, 1.564, -1.156] }
+"71" = { imgt = 80, ca = [12.683, 1.35, 2.375] }
+"72" = { imgt = 81, ca = [14.566, 3.467, 4.845] }
+"83" = { imgt = 95, ca = [-7.403, 5.63, -10.967] }
+"84" = { imgt = 96, ca = [-10.692, 4.711, -9.332] }
+"85" = { imgt = 97, ca = [-9.686, 1.059, -9.505] }
+"86" = { imgt = 98, ca = [-6.883, 1.801, -7.044] }
+"87" = { imgt = 99, ca = [-9.35, 2.624, -4.267] }
+"88" = { imgt = 100, ca = [-8.685, -0.03, -1.643] }
+"89" = { imgt = 101, ca = [-7.261, -0.876, 1.751] }
+"90" = { imgt = 102, ca = [-3.497, -1.278, 1.557] }
+"91" = { imgt = 103, ca = [-1.697, -3.596, 3.967] }
+"92" = { imgt = 104, ca = [1.98, -4.046, 4.688] }
+"93" = { imgt = 105, ca = [2.982, -7.531, 5.744] }
+"94" = { imgt = 106, ca = [6.165, -9.192, 6.811] }
+
+[L]
+# In the consensus frame: two unit vectors in the plane that ABangle fits
+# to the domain, and a reference point (from pcL.txt).
+plane_vectors = [[-0.6193343, 0.639472, 0.4555223], [0.5267385, 0.7686645, -0.362907]]
+point = [-3.702842, -0.6288583, -5.314558]
+# The domain's end of the separation vector C is
+# point + a * plane_vectors[0] + b * plane_vectors[1], with [a, b] =
+separation = [3.0, -1.0]
+
+# The core set: CA coordinates of the consensus L domain (from
+# consensus_L.pdb), by Chothia position, and the IMGT equivalent of each.
+[L.core]
+"14" = { imgt = 14, ca = [14.16, -2.53, 1.164] }
+"15" = { imgt = 15, ca = [12.549, -5.592, 2.682] }
+"16" = { imgt = 16, ca = [11.644, -5.008, 6.289] }
+"17" = { imgt = 17, ca = [11.243, -1.267, 5.861] }
+"18" = { imgt = 18, ca = [8.13, 0.784, 6.357] }
+"19" = { imgt = 19, ca = [6.519, 2.429, 3.378] }
+"20" = { imgt = 20, ca = [3.823, 5.049, 3.104] }
+"21" = { imgt = 21, ca = [1.791, 5.871, 0.018] }
+"22" = { imgt = 22, ca = [-0.36, 8.974, -0.164] }
+"23" = { imgt = 23, ca = [-3.573, 9.761, -1.992] }
+"35" = { imgt = 41, ca = [-6.962, 0.741, -1.514] }
+"36" = { imgt = 42, ca = [-6.202, -1.965, -4.063] }
+"37" = { imgt = 43, ca = [-3.094, -3.987, -4.803] }
+"38" = { imgt = 44, ca = [-2.361, -5.22, -8.308] }
+"44" = { imgt = 50, ca = [-6.597, -6.066, -8.474] }
+"45" = { imgt = 51, ca = [-7.191, -7.12, -4.897] }
+"46" = { imgt = 52, ca = [-8.992, -5.083, -2.249] }
+"47" = { imgt = 53, ca = [-6.734, -4.294, 0.688] }
+"48" = { imgt = 54, ca = [-8.483, -1.588, 2.677] }
+"49" = { imgt = 55, ca = [-11.981, -0.165, 2.608] }
+"69" = { imgt = 85, ca = [-8.517, 15.187, 1.605] }
+"70" = { imgt = 86, ca = [-5.509, 13.252, 2.391] }
+"71" = { imgt = 87, ca = [-5.286, 9.524, 2.869] }
+"72" = { imgt = 88, ca = [-2.358, 7.193, 3.421] }
+"73" = { imgt = 89, ca = [-1.609, 3.51, 3.066] }
+"74" = { imgt = 90, ca = [1.186, 2.181, 5.234] }
+"75" = { imgt = 91, ca = [3.032, -1.109, 5.019] }
+"79" = { imgt = 95, ca = [7.846, -8.239, 2.293] }
+"80" = { imgt = 96, ca = [8.895, -9.455, -1.132] }
+"81" = { imgt = 97, ca = [5.323, -10.363, -1.971] }
+"82" = { imgt = 98, ca = [4.247, -6.759, -1.502] }
+"85" = { imgt = 101, ca = [1.083, -1.398, -7.971] }
+"86" = { imgt = 102, ca = [-1.192, 0.233, -5.412] }
+"87" = { imgt = 103, ca = [-4.282, 2.242, -6.274] }
+"88" = { imgt = 104, ca = [-6.613, 4.323, -4.172] }
