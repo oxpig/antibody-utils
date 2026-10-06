@@ -11,8 +11,7 @@
 # The values come from ABangle's data files (consensus_H.pdb, consensus_L.pdb,
 # pcH.txt, pcL.txt, Hcoresetfw.txt and Lcoresetfw.txt).  These files are
 # identical in OPIG's ABangle repository (oxpig/abangle), which is released
-# under the BSD 3-Clause licence, copyright (c) 2023, Oxford Protein Informatics
-# Group.
+# under the BSD 3-Clause licence, copyright (c) 2023, Oxford University.
 #
 # Positions are those of the original definition, in Chothia numbering, with
 # their IMGT equivalents.  Coordinates are in angstroms.
