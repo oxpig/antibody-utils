@@ -44,7 +44,8 @@ needs_anarcii = pytest.mark.skipif(
 
 def test_importing_does_not_import_anarcii_or_torch():
     code = (
-        "import sys, antibody_utils, antibody_utils.numbering, antibody_utils.regions;"
+        "import sys, antibody_utils, antibody_utils.numbering, antibody_utils.regions,"
+        " antibody_utils.structure;"
         "print('anarcii' in sys.modules, 'torch' in sys.modules)"
     )
     result = subprocess.run(  # noqa: S603 (fixed command, this interpreter)
@@ -61,6 +62,10 @@ def test_importing_does_not_import_anarcii_or_torch():
         "antibody_utils.numbering.anarcii",
         "antibody_utils.numbering.positions",
         "antibody_utils.regions",
+        "antibody_utils.structure",
+        "antibody_utils.structure.models",
+        "antibody_utils.structure.parser",
+        "antibody_utils.structure.selection",
     ],
 )
 def test_each_module_imports_first(module):
