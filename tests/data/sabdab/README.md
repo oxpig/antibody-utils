@@ -20,7 +20,11 @@ so these files' light chains read as one residue longer than SAbDab's `VL`.
 The tests that this affects are marked as expected failures until SAbDab's
 renumbering is fixed.
 
-If you use SAbDab, please cite Dunbar J, Krawczyk K, Leem J, Baker T, Fuchs A,
-Georges G, Shi J and Deane CM, "SAbDab: the structural antibody database",
-*Nucleic Acids Research* 42:D1140–D1146 (2014),
-https://doi.org/10.1093/nar/gkt1043.
+If you use SAbDab, please cite:
+
+- Dunbar J, Krawczyk K, Leem J, Baker T, Fuchs A, Georges G, Shi J and
+  Deane CM, "SAbDab: the structural antibody database", *Nucleic Acids
+  Research* 42:D1140–D1146 (2014), <https://doi.org/10.1093/nar/gkt1043>
+- Capel HL, Vavourakis O, Williams BH, Taylor CR and Deane CM, "SAbDab2: the
+  structural antibody database in the age of machine learning", *bioRxiv*
+  (2026), <https://doi.org/10.64898/2026.06.16.732554>

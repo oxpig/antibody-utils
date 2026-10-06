@@ -60,38 +60,16 @@ pip install "antibody-utils[numbering]"
 See the [documentation](https://antibody-utils.readthedocs.io) for a user guide
 and API reference.
 
-## Development
+## Citing
 
-The BLOSUM62 substitution matrix is fetched from NCBI and verified against a
-pinned checksum, rather than tracked in this repository.  Fetch it once before
-running the tests:
+If you use antibody-utils in published work, please cite it and the methods
+it implements; see [Citing](https://antibody-utils.readthedocs.io/en/latest/citing.html)
+in the documentation.
 
-```console
-uv run --no-project python scripts/fetch_blosum62.py
-uv run pytest
-```
+## Contributing
 
-The tests include the `>>>` examples in docstrings, and the ```` ```pycon ````
-examples in the README and documentation, so keep them runnable.
-
-Install the [pre-commit](https://pre-commit.com/) hooks with
-`uv run pre-commit install`.  Pull requests are also checked by
-[pre-commit.ci](https://pre-commit.ci/), which pushes any automatic fixes.
-
-> [!TIP]
-> Git cannot install hooks for you when you clone a repository.  To have
-> pre-commit hooks installed automatically in every repository you clone or
-> initialise from now on, install pre-commit as a tool and configure a Git
-> template directory, once per machine:
->
-> ```console
-> uv tool install pre-commit
-> git config --global init.templateDir ~/.git-template
-> pre-commit init-templatedir ~/.git-template
-> ```
->
-> Repositories without a `.pre-commit-config.yaml` are unaffected.  Existing
-> clones still need `pre-commit install`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to set up a development
+environment, run the tests and propose changes.
 
 ## Licence
 

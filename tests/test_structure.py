@@ -66,7 +66,7 @@ def _structure(chains):
     """Build a one-model structure from `{chain name: [(position, name), ...]}`.
 
     Positions are numbers or strings such as `"111A"`.  Each chain needs at
-    least two residues for gemmi to treat it as a polymer.
+    least two residues for GEMMI to treat it as a polymer.
     """
     structure = gemmi.Structure()
     structure.name = "test"

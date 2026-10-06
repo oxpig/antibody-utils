@@ -2,11 +2,10 @@
 
 There are two ways to number a structure's antibody chains:
 
-- By default, every protein chain is numbered with ANARCII, which needs the
-  `numbering` extra.  Chains that ANARCII cannot number are treated as
-  non-antibody chains.
-- If the file is already numbered, as SAbDab's files are, name its antibody
-  chains with `chains` to use that numbering as it is, without ANARCII.
+- By default, every protein chain is numbered with ANARCII, which needs the `numbering`
+  extra.  Chains that ANARCII cannot number are treated as non-antibody chains.
+- If the file is already numbered, as SAbDab's files are, name its antibody chains with
+  `chains` to use that numbering as it is, without renumberin with ANARCII.
 """
 
 from __future__ import annotations
@@ -43,7 +42,7 @@ def read_structure(
     """Read a structure file and number its antibody chains.
 
     Args:
-        path: A PDB, mmCIF or other file that gemmi can read, optionally
+        path: A PDB, mmCIF or other file that GEMMI can read, optionally
             gzipped.
         scheme: The numbering scheme.  With `chains`, this is the scheme that
             the file is already numbered in.
@@ -120,7 +119,7 @@ def _amino_acids(chain: gemmi.Chain) -> tuple[list[int], str]:
 
     Returns:
         Each residue's index in the chain, and its one-letter code.  Residues
-        that gemmi doesn't know but that have a Cα atom are `X`.  Only the
+        that GEMMI doesn't know but that have a Cα atom are `X`.  Only the
         first of several alternative residues at one position is kept.
     """
     indices: list[int] = []

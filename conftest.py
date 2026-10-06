@@ -6,11 +6,19 @@ Sybil handles the Markdown files instead.
 
 Only ```` ```pycon ```` blocks (interactive sessions with `>>>` prompts) are
 run; ```` ```python ```` blocks are illustrative and are not executed.
+
+Each Markdown document runs in a temporary directory holding the example
+structure files, and can skip examples that need ANARCII with
+`% skip: start if(not HAS_ANARCII, reason="...")` and `% skip: end`.
 """
 
+import os
+import tempfile
 from collections.abc import Iterable
 from doctest import NORMALIZE_WHITESPACE
 from importlib.util import find_spec
+from pathlib import Path
+from typing import Any
 
 from sybil import Document, Region, Sybil
 from sybil.evaluators.doctest import DocTestEvaluator
@@ -51,8 +59,35 @@ collect_ignore = (
     [] if find_spec("anarcii") else ["src/antibody_utils/numbering/anarcii.py"]
 )
 
+# Structure files that the documentation's examples read, by the name they use.
+EXAMPLE_FILES = {
+    "12e8.pdb.gz": "tests/data/pdb/12e8.pdb.gz",
+    "pdb_000012e8_H_L_ab.cif.gz": "tests/data/sabdab/pdb_000012e8_H_L_ab.cif.gz",
+    "pdb_000012e8_sabdab.cif.gz": "tests/data/sabdab/pdb_000012e8_sabdab.cif.gz",
+}
+
+
+def _setup(namespace: dict[str, Any]) -> None:
+    """Run a document's examples in a directory holding the example files."""
+    root = Path(__file__).parent
+    directory = tempfile.TemporaryDirectory()
+    for name, source in EXAMPLE_FILES.items():
+        (Path(directory.name) / name).symlink_to(root / source)
+    namespace["_directory"] = directory
+    namespace["_previous_directory"] = Path.cwd()
+    namespace["HAS_ANARCII"] = find_spec("anarcii") is not None
+    os.chdir(directory.name)
+
+
+def _teardown(namespace: dict[str, Any]) -> None:
+    os.chdir(namespace["_previous_directory"])
+    namespace["_directory"].cleanup()
+
+
 pytest_collect_file = Sybil(
     parsers=[PyconParser(doctest_optionflags=NORMALIZE_WHITESPACE), SkipParser()],
     patterns=["*.md"],
     excludes=["docs/_build/*"],
+    setup=_setup,
+    teardown=_teardown,
 ).pytest()

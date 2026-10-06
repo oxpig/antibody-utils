@@ -5,14 +5,15 @@ angles and a distance.  It was introduced by Dunbar J, Fuchs A, Shi J and
 Deane CM, `"ABangle: characterising the VH–VL orientation in antibodies"
 <https://doi.org/10.1093/protein/gzt020>`__, *Protein Eng Des Sel* 26:611–620
 (2013).  Each domain is given a coordinate frame by superposing a consensus
-domain on to the CA atoms of a core set of framework positions.  A vector C
-joins the two domains, and each domain has two vectors, 1 and 2, in a plane
-fitted to it:
+domain on to the CA atoms of a core set of framework positions.  A vector
+**C** joins the two domains, and each domain has two vectors in a plane fitted
+to it: **H1** and **H2** on VH, and **L1** and **L2** on VL.  The measures
+are:
 
-- HL: the torsion angle between H1 and L1 about C.
-- HC1 and HC2: the angles between H1 and H2, and C.
-- LC1 and LC2: the angles between L1 and L2, and C.
-- dc: the length of C.
+- HL: the torsion angle between **H1** and **L1** about **C**.
+- HC1 and HC2: the angles between **H1** and **H2**, and **C**.
+- LC1 and LC2: the angles between **L1** and **L2**, and **C**.
+- dc: the length of **C**.
 
 The core sets are defined in Chothia numbering, so the Fv must be numbered in
 the Chothia or IMGT scheme.
