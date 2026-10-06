@@ -80,6 +80,9 @@ fwl3 = [69, 104]
 cdrl3 = [105, 116]
 fwl4 = [117, 128]
 
+# North B, Lehmann A and Dunbrack RL Jr, "A new clustering of antibody CDR
+# loop conformations", J Mol Biol 406:228–256 (2011),
+# https://doi.org/10.1016/j.jmb.2010.10.030
 [north.H]
 fwh1 = [1, 23]
 cdrh1 = [24, 40]
