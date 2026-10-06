@@ -109,6 +109,7 @@ post_commit_hooks = []
 [dependency-groups]
 dev = [
     "bump-my-version>=1.4.1",
+    "platformdirs>=4.12.2",
     "pre-commit>=4.6.0",
     "pytest>=9.1.1",
     "pytest-cov>=7",

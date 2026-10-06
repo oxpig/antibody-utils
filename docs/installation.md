@@ -56,6 +56,22 @@ pip install antibody-utils
 
   :::
 
+`canonicals`
+: Assign CDRs to the canonical clusters of
+  [PyIgClassify2](https://dunbrack.fccc.edu/lab/PyIgClassify2_lic)
+  (Kelow et al. 2022).  PyIgClassify2's data is licensed by Fox Chase Cancer
+  Center and is not included: you need a licence from them, and your own copy
+  of the data.  See `antibody_utils.canonicals` for how to declare your
+  licence and load the data.
+
+  ```console
+  uv add "antibody-utils[canonicals]"
+  ```
+
+  ```console
+  pip install "antibody-utils[canonicals]"
+  ```
+
 ## Installing for development
 
 Clone the repository, fetch the BLOSUM62 matrix (not tracked in git) and

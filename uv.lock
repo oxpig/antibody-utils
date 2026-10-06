@@ -75,6 +75,7 @@ numbering = [
 [package.dev-dependencies]
 dev = [
     { name = "bump-my-version" },
+    { name = "platformdirs" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -101,6 +102,7 @@ provides-extras = ["numbering", "canonicals"]
 [package.metadata.requires-dev]
 dev = [
     { name = "bump-my-version", specifier = ">=1.4.1" },
+    { name = "platformdirs", specifier = ">=4.12.2" },
     { name = "pre-commit", specifier = ">=4.6.0" },
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "pytest-cov", specifier = ">=7" },
