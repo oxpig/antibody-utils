@@ -45,6 +45,11 @@ __all__ = [
 class Definition(_CaseInsensitiveStrEnum):
     """A definition of the CDR and framework regions.
 
+    The North definition is that of North B, Lehmann A and Dunbrack RL Jr,
+    `"A new clustering of antibody CDR loop conformations"
+    <https://doi.org/10.1016/j.jmb.2010.10.030>`__, *J Mol Biol* 406:228–256
+    (2011).
+
     >>> Definition("North")
     <Definition.NORTH: 'north'>
     """

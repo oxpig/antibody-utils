@@ -3,7 +3,8 @@
 # Each liability is a regular expression, searched for in each chain's numbered
 # variable-domain sequence.  A match counts if its first residue lies in one of
 # the liability's `regions`: region names or groups (see
-# `antibody_utils.regions.REGION_GROUPS`) under the North definition, or the
+# `antibody_utils.regions.REGION_GROUPS`) under the North definition (North,
+# Lehmann and Dunbrack 2011, https://doi.org/10.1016/j.jmb.2010.10.030), or the
 # position sets in `[positions]`.  All positions are IMGT-numbered.
 #
 # Optional keys:

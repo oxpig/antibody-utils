@@ -6,7 +6,8 @@ fragmentation, or unwanted binding.  The motifs, and the regions in which they
 count, are listed in `antibody_utils/data/liabilities.toml`.
 
 Matches are found in IMGT-numbered domains, and assigned to regions under the
-North definition.
+North definition (`North, Lehmann and Dunbrack 2011
+<https://doi.org/10.1016/j.jmb.2010.10.030>`__).
 """
 
 from __future__ import annotations
