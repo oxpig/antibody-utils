@@ -59,7 +59,15 @@ class OrientationAngles:
     dc: float
 
     def as_dict(self) -> dict[str, float]:
-        """The measures, keyed by their names in the ABangle paper (`"HL"` …)."""
+        """The measures, keyed by the symbols used in the paper and by legacy ABDB.
+
+        Returns:
+            The measures, keyed `"HL"`, `"HC1"`, `"LC1"`, `"HC2"`, `"LC2"` and
+            `"dc"`.
+
+        >>> OrientationAngles(-60.0, 70.0, 120.0, 110.0, 80.0, 16.0).as_dict()
+        {'HL': -60.0, 'HC1': 70.0, 'LC1': 120.0, 'HC2': 110.0, 'LC2': 80.0, 'dc': 16.0}
+        """
         return {
             name.upper() if name != "dc" else name: value
             for name, value in asdict(self).items()
