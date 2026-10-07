@@ -12,6 +12,7 @@ ever ship the exact file published by NCBI.
 from __future__ import annotations
 
 import hashlib
+import logging
 import sys
 import urllib.request
 from pathlib import Path
@@ -26,6 +27,8 @@ DESTINATION = (
     / "BLOSUM62"
 )
 
+logger = logging.getLogger(__name__)
+
 
 def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -38,24 +41,24 @@ def main() -> int:
         The process exit status.
     """
     if DESTINATION.exists() and _sha256(DESTINATION.read_bytes()) == SHA256:
-        print(f"{DESTINATION} is present and verified.")
+        logger.info("%s is present and verified.", DESTINATION)
         return 0
 
     with urllib.request.urlopen(URL, timeout=60) as response:
         data = response.read()
 
     if (digest := _sha256(data)) != SHA256:
-        print(
-            f"Checksum mismatch for {URL}: expected {SHA256}, got {digest}.",
-            file=sys.stderr,
+        logger.error(
+            "Checksum mismatch for %s: expected %s, got %s.", URL, SHA256, digest
         )
         return 1
 
     DESTINATION.parent.mkdir(parents=True, exist_ok=True)
     DESTINATION.write_bytes(data)
-    print(f"Fetched {URL} to {DESTINATION}.")
+    logger.info("Fetched %s to %s.", URL, DESTINATION)
     return 0
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     sys.exit(main())

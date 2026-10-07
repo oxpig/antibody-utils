@@ -4,27 +4,66 @@ ci:
   autofix_commit_msg: "Apply automatic fixes from pre-commit hooks"
   autoupdate_schedule: weekly
   autoupdate_commit_msg: "Bump pre-commit hook versions"
+  # pre-commit.ci has no network access, which `uv lock` needs.
+  skip: [ uv-lock ]
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
-        exclude: "^tests/data/.*"
+      - id: check-case-conflict
+      - id: check-json
       - id: check-yaml
+      - id: check-toml
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      - id: check-vcs-permalinks
       - id: check-merge-conflict
+      - id: debug-statements
       - id: end-of-file-fixer
-        exclude: "^tests/data/.*"
+        exclude: "^tests/data/legacy/.*"
+      - id: trailing-whitespace
+        exclude: "^tests/data/legacy/.*"
+        args: [ --markdown-linebreak-ext=md ]
+      - id: mixed-line-ending
+        exclude: "^tests/data/legacy/.*"
+        args: [ --fix=lf ]
+      # Ruff's EXE rules cover Python executables, so exclude them here.
+      - id: check-executables-have-shebangs
+        exclude_types: [ python ]
+      - id: check-shebang-scripts-are-executable
+        exclude_types: [ python ]
 
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.38.2
+    hooks:
+      - id: check-github-workflows
+      - id: check-readthedocs
+
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: '0.26'
+    hooks:
+      - id: validate-pyproject
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.12.23
+    hooks:
+      - id: uv-lock
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.10
     hooks:
-      - id: ruff
+      - id: ruff-check
         name: Lint with Ruff
         args: [ --fix ]
-        types: [ python ]
 
       - id: ruff-format
         name: Format with Ruff
-        types: [ python ]
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.51.1
+    hooks:
+      - id: typos
+        # Report rather than fix: its corrections of domain terms are often wrong.
+        args: [ --force-exclude ]

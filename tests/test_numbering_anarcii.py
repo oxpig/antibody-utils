@@ -281,8 +281,7 @@ def test_batch_size_limits(batch_size, fake_anarcii):
 
 @pytest.fixture(scope="module")
 def legacy_sequences():
-    with open(LEGACY / "numbered_sequences.json") as f:
-        sequences = json.load(f)
+    sequences = json.loads((LEGACY / "numbered_sequences.json").read_text())
     # Hand-made numbering with no natural sequence behind it.
     del sequences["trast_L_l54_insertions"]
     return sequences

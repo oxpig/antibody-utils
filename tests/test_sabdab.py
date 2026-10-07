@@ -11,7 +11,7 @@ from antibody_utils.structure import Fv, read_structure
 DATA = Path(__file__).parent / "data"
 SABDAB = DATA / "sabdab"
 
-with open(SABDAB / "SAbDab_summary.csv", newline="") as _f:
+with (SABDAB / "SAbDab_summary.csv").open(newline="") as _f:
     SUMMARY = list(csv.DictReader(_f))
 
 # SAbDab numbers the residues after the variable domain by counting on from
@@ -46,8 +46,7 @@ def _domain(row, chain):
 
 @pytest.fixture(scope="module")
 def legacy_sequences():
-    with open(DATA / "legacy" / "numbered_sequences.json") as f:
-        return json.load(f)
+    return json.loads((DATA / "legacy" / "numbered_sequences.json").read_text())
 
 
 @pytest.mark.parametrize(("row", "chain"), _cases(FLANKING_RESIDUE))

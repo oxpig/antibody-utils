@@ -103,7 +103,7 @@ def test_parse_chain_position_invalid(text):
 def test_enums_are_case_insensitive():
     assert Chain("l") is Chain.LIGHT
     assert Scheme("IMGT") is Scheme.IMGT
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="not a valid Scheme"):
         Scheme("wolfguy")
 
 
@@ -113,5 +113,5 @@ def test_case_insensitive_lookup_of_mixed_case_values():
 
     for value in ("AHo", "aho", "AHO", "aHO"):
         assert Example(value) is Example.AHO
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="'ah' is not a valid"):
         Example("ah")

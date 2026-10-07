@@ -20,8 +20,7 @@ from antibody_utils.structure import Fv, from_gemmi, read_structure, select
 DATA = Path(__file__).parent / "data"
 LEGACY = DATA / "legacy"
 
-with open(LEGACY / "abangle.json") as _f:
-    GOLDEN_ANGLES = json.load(_f)
+GOLDEN_ANGLES = json.loads((LEGACY / "abangle.json").read_text())
 
 
 def _rotation(axis, degrees):
@@ -215,7 +214,7 @@ def test_abangle_needs_core_positions(fv, tmp_path):
 
 
 def test_abangle_on_sabdab_files_matches_legacy():
-    with open(DATA / "sabdab" / "SAbDab_summary.csv", newline="") as f:
+    with (DATA / "sabdab" / "SAbDab_summary.csv").open(newline="") as f:
         rows = {(r["PDB"][-4:], r["Hchain"], r["Lchain"]): r for r in csv.DictReader(f)}
     for entry in GOLDEN_ANGLES:
         heavy, light = entry["heavy"], entry["light"]

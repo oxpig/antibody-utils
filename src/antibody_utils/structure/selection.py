@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from typing import TYPE_CHECKING
 
 import gemmi
 
 from antibody_utils.regions import Definition, Region, _expand
 from antibody_utils.structure.models import AntibodyChain, Fv
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 __all__ = ["BACKBONE_ATOMS", "select"]
 

@@ -18,8 +18,7 @@ LEGACY = Path(__file__).parent / "data" / "legacy"
 
 
 def _legacy(name):
-    with open(LEGACY / name) as f:
-        return json.load(f)
+    return json.loads((LEGACY / name).read_text())
 
 
 # --- Data integrity --------------------------------------------------------
@@ -113,7 +112,7 @@ def test_get_region_accepts_enums_and_positions():
 
 
 def test_get_region_rejects_unknown_definition():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="not a valid Definition"):
         get_region("27", "H", scheme="imgt", definition="wolfguy")
 
 

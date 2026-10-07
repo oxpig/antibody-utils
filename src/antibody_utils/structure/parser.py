@@ -12,7 +12,7 @@ There are two ways to number a structure's antibody chains:
 from __future__ import annotations
 
 import os
-from collections.abc import Mapping
+from typing import TYPE_CHECKING
 
 import gemmi
 
@@ -25,6 +25,9 @@ from antibody_utils.numbering.anarcii import (
 from antibody_utils.numbering.positions import Chain, Position, Scheme
 from antibody_utils.regions import get_region
 from antibody_utils.structure.models import AntibodyChain, AntibodyStructure
+
+if TYPE_CHECKING:
+    from collections.abc import Mapping
 
 __all__ = ["from_gemmi", "read_structure"]
 

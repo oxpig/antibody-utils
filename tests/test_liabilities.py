@@ -27,8 +27,7 @@ def _domain(name, chain_type, numbering, scheme="imgt"):
 
 @pytest.fixture(scope="module")
 def legacy_cases():
-    with open(LEGACY / "liabilities.json") as f:
-        return json.load(f)
+    return json.loads((LEGACY / "liabilities.json").read_text())
 
 
 def _key(liability: Liability):

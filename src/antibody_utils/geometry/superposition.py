@@ -7,15 +7,20 @@ present in both structures are used.
 
 from __future__ import annotations
 
-from collections.abc import Iterable
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
 import numpy as np
-from numpy.typing import ArrayLike
 
-from antibody_utils.numbering.positions import Chain, Position
 from antibody_utils.regions import Definition, Region, _expand
 from antibody_utils.structure.models import AntibodyChain, Fv
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from numpy.typing import ArrayLike
+
+    from antibody_utils.numbering.positions import Chain, Position
 
 __all__ = [
     "Superposition",

@@ -143,7 +143,7 @@ def _import_anarcii() -> type[Anarcii]:
 @cache
 def _model(cpu: bool) -> Anarcii:
     """Load ANARCII's antibody model once per device choice."""
-    Anarcii = _import_anarcii()
+    Anarcii = _import_anarcii()  # ruff: ignore[N806] — Anarcii is a class.
     with contextlib.redirect_stdout(io.StringIO()):
         return Anarcii(seq_type="antibody", mode="accuracy", cpu=cpu, verbose=False)
 
