@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: >-
+  If you use antibody-utils in published work, please cite it as below, and
+  the methods and data it implements that your work relies on: see
+  https://antibody-utils.readthedocs.io/en/latest/citing.html.
+title: antibody-utils
+abstract: >-
+  Utilities for antibody sequence and structure analysis: numbering, region
+  definitions, sequence comparison, VH/VL orientation and more.
+type: software
+authors:
+  - given-names: Benjamin Heathcote
+    family-names: Williams
+    affiliation: University of Oxford
+    orcid: https://orcid.org/0000-0001-9544-0890
+  - name: Oxford Protein Informatics Group
+    website: https://opig.stats.ox.ac.uk/
+repository-code: https://github.com/oxpig/antibody-utils
+url: https://antibody-utils.readthedocs.io
+license: BSD-3-Clause
+keywords:
+  - antibody
+  - immunoglobulin
+  - CDR
+  - numbering
+  - bioinformatics
+version: 0.0.0
+date-released: 2026-10-08

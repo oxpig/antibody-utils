@@ -1,5 +1,17 @@
 # antibody-utils
 
+[![Tests](https://github.com/oxpig/antibody-utils/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/oxpig/antibody-utils/actions/workflows/tests.yml)
+[![Documentation](https://readthedocs.org/projects/antibody-utils/badge/?version=latest)](https://antibody-utils.readthedocs.io/en/latest/)
+[![pre-commit.ci](https://results.pre-commit.ci/badge/github/oxpig/antibody-utils/main.svg)](https://results.pre-commit.ci/latest/github/oxpig/antibody-utils/main)
+[![Coverage](https://codecov.io/gh/oxpig/antibody-utils/graph/badge.svg)](https://codecov.io/gh/oxpig/antibody-utils)
+[![PyPI](https://img.shields.io/pypi/v/antibody-utils)](https://pypi.org/project/antibody-utils/)
+[![Python versions](https://img.shields.io/pypi/pyversions/antibody-utils)](https://pypi.org/project/antibody-utils/)
+[![Downloads](https://static.pepy.tech/badge/antibody-utils/month)](https://pepy.tech/projects/antibody-utils)
+
+[![Licence: BSD-3-Clause](https://img.shields.io/badge/licence-BSD--3--Clause-blue)](LICENCE)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+
 Utilities for antibody sequence and structure analysis: numbering, region
 definitions, sequence comparison, VH/VL orientation and more.
 
