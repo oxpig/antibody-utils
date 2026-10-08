@@ -7,6 +7,8 @@ releases may change the API.
 
 ## Unreleased
 
+## 0.1.0 (2026-10-08)
+
 The first release.  antibody-utils replaces the reusable parts of `ABDB`, the
 Python package behind the original SAbDab.  See
 [Migrating from ABDB](https://antibody-utils.readthedocs.io/en/latest/migrating.html).
