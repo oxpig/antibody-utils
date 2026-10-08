@@ -267,7 +267,7 @@ class AntibodyStructure:
             ValueError: If two antibody chains have the same name, or a chain
                 is not numbered in `scheme`.
         """
-        #: The underlying gemmi structure, with its original numbering.
+        #: The underlying GEMMI structure, with its original numbering.
         self.structure = structure
         #: The antibody chains, in the order they appear in the structure.
         self.chains = tuple(chains)
