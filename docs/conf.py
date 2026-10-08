@@ -1,6 +1,9 @@
 """Sphinx configuration for antibody-utils."""
 
 from importlib.metadata import version as _version
+from pathlib import Path
+
+_DOCS = Path(__file__).parent
 
 project = "antibody-utils"
 author = "Oxford Protein Informatics Group"
@@ -37,3 +40,29 @@ exclude_patterns = ["_build"]
 
 html_theme = "furo"
 html_title = f"antibody-utils {release}"
+html_theme_options = {
+    # "View source" and "Edit this page" links on each page.
+    "source_repository": "https://github.com/oxpig/antibody-utils/",
+    "source_branch": "main",
+    "source_directory": "docs/",
+    # GitHub's mark, from Furo's documentation.
+    "footer_icons": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/oxpig/antibody-utils",
+            "html": (_DOCS / "_icons" / "github.svg").read_text(),
+            "class": "",
+        },
+    ],
+}
+
+
+def _hide_source_links(app, pagename, templatename, context, doctree):
+    # The API pages are generated at build time, so have no source in the
+    # repository to view or edit.
+    if pagename.startswith("api/generated/"):
+        context["theme_top_of_page_buttons"] = []
+
+
+def setup(app):
+    app.connect("html-page-context", _hide_source_links)

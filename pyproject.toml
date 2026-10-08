@@ -126,6 +126,7 @@ locale = "en-gb"
 
 [tool.typos.default.extend-identifiers]
 NORMALIZE_WHITESPACE = "NORMALIZE_WHITESPACE" # doctest option flag
+currentColor = "currentColor"                 # CSS keyword
 
 [tool.typos.default.extend-words]
 blosum = "blosum" # BLOSUM substitution matrices
