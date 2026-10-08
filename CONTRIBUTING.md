@@ -115,6 +115,9 @@ Describe the change itself in the pull request, relative to `main`.
 
 ## Releasing
 
+Record each user-facing change under "Unreleased" in `CHANGELOG.md`, in the
+pull request that makes it.
+
 Maintainers, who can push to `main` directly, release from an up-to-date
 `main`:
 
@@ -123,8 +126,13 @@ uv run bump-my-version bump minor   # or major, or patch
 git push --follow-tags
 ```
 
-bump-my-version updates the version in `pyproject.toml` and `uv.lock`, commits,
-and creates a signed `v*` tag.  Pushing the tag runs the publish workflow,
-which builds the distributions, publishes them, and creates a GitHub release
-with Sigstore signatures.  Until 0.1.0, releases go to TestPyPI and are marked
-as pre-releases.
+bump-my-version updates the version in `pyproject.toml`, `uv.lock` and
+`CITATION.cff`, turns "Unreleased" in `CHANGELOG.md` into a heading for the
+new version, commits, and creates a signed `v*` tag.  Pushing the tag runs the
+publish workflow, which builds the distributions, publishes them to PyPI, and
+creates a GitHub release with Sigstore signatures and the changelog entry as
+its notes.  Zenodo then archives the release and mints its DOI.
+
+To try a release without publishing it, run the publish workflow by hand
+from the repository's **Actions** tab, which publishes to TestPyPI
+instead.
