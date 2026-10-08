@@ -17,7 +17,7 @@ def test_missing_blosum62_explains_how_to_fetch_it(monkeypatch):
     monkeypatch.setattr(_data, "_read_bytes", missing)
     _data.load_blosum62.cache_clear()
     try:
-        with pytest.raises(FileNotFoundError, match="fetch_blosum62.py"):
+        with pytest.raises(FileNotFoundError, match=r"fetch_blosum62\.py"):
             _data.load_blosum62()
     finally:
         _data.load_blosum62.cache_clear()

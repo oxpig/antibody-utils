@@ -39,8 +39,7 @@ def _domain(name, entry, scheme):
 
 @pytest.fixture(scope="module")
 def legacy_sequences():
-    with open(LEGACY / "numbered_sequences.json") as f:
-        return json.load(f)
+    return json.loads((LEGACY / "numbered_sequences.json").read_text())
 
 
 @pytest.fixture(scope="module")
@@ -160,8 +159,7 @@ def test_unscored_residues_are_skipped():
 
 def test_matches_legacy(legacy_sequences):
     """Identity and similarity for every legacy fixture pair and region."""
-    with open(LEGACY / "identity_similarity.json") as f:
-        cases = json.load(f)
+    cases = json.loads((LEGACY / "identity_similarity.json").read_text())
     mismatches = []
     for case in cases:
         a = _domain(case["a"], legacy_sequences[case["a"]], case["scheme"])

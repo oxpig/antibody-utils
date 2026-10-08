@@ -18,11 +18,11 @@ differ.
 
 from __future__ import annotations
 
-from collections.abc import Iterable
 from enum import StrEnum
 from functools import cache
 from itertools import islice
 from string import ascii_uppercase
+from typing import TYPE_CHECKING
 
 from antibody_utils._data import load_json, load_toml
 from antibody_utils.numbering.positions import (
@@ -31,6 +31,9 @@ from antibody_utils.numbering.positions import (
     Scheme,
     _CaseInsensitiveStrEnum,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 __all__ = [
     "REGION_GROUPS",

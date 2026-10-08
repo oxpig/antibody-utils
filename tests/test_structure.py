@@ -36,8 +36,7 @@ needs_anarcii = pytest.mark.skipif(
 
 @pytest.fixture(scope="module")
 def legacy_sequences():
-    with open(LEGACY / "numbered_sequences.json") as f:
-        return json.load(f)
+    return json.loads((LEGACY / "numbered_sequences.json").read_text())
 
 
 def _legacy_fv(entry, heavy, light, scheme):
@@ -74,11 +73,11 @@ def _structure(chains):
     model = gemmi.Model(1)
     for name, residues in chains.items():
         chain = gemmi.Chain(name)
-        for position, residue_name in residues:
-            if isinstance(position, int):
-                position = Position(position)
+        for raw_position, residue_name in residues:
+            if isinstance(raw_position, int):
+                position = Position(raw_position)
             else:
-                position = Position.parse(position)
+                position = Position.parse(raw_position)
             residue = gemmi.Residue()
             residue.name = residue_name
             residue.seqid = gemmi.SeqId(position.number, position.insertion or " ")

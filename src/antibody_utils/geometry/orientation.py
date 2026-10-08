@@ -23,13 +23,16 @@ from __future__ import annotations
 import math
 from dataclasses import asdict, dataclass
 from functools import cache
+from typing import TYPE_CHECKING
 
 import numpy as np
 
 from antibody_utils._data import load_toml
 from antibody_utils.geometry.superposition import superpose
 from antibody_utils.numbering.positions import Position, Scheme
-from antibody_utils.structure.models import AntibodyChain, Fv
+
+if TYPE_CHECKING:
+    from antibody_utils.structure.models import AntibodyChain, Fv
 
 __all__ = ["OrientationAngles", "abangle"]
 

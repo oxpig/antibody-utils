@@ -88,7 +88,7 @@ jobs:
         --repo "$GITHUB_REPOSITORY"
         --notes ""
         --prerelease
-    - name: Upload artifact signatures to GitHub Release
+    - name: Upload artefact signatures to GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
       # Upload to GitHub Release using the `gh` CLI.

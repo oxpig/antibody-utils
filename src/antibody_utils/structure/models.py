@@ -9,13 +9,17 @@ residues invalidates the mapping.
 
 from __future__ import annotations
 
-from collections.abc import Iterator, Sequence
+from typing import TYPE_CHECKING
 
-import gemmi
-
-from antibody_utils.numbering.anarcii import NumberedSequence
 from antibody_utils.numbering.positions import Chain, Position, Scheme
-from antibody_utils.regions import Definition, Region
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator, Sequence
+
+    import gemmi
+
+    from antibody_utils.numbering.anarcii import NumberedSequence
+    from antibody_utils.regions import Definition, Region
 
 __all__ = ["AntibodyChain", "AntibodyStructure", "Fv"]
 

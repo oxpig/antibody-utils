@@ -7,12 +7,15 @@ compared.  Only like chains are compared (heavy with heavy, light with light).
 
 from __future__ import annotations
 
-from collections.abc import Iterable
+from typing import TYPE_CHECKING
 
 from antibody_utils._data import load_blosum62
 from antibody_utils.numbering.anarcii import NumberedSequence
 from antibody_utils.numbering.positions import Chain, Position, Scheme
 from antibody_utils.regions import Definition, Region, RegionSelector
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 __all__ = [
     "cdr_lengths",

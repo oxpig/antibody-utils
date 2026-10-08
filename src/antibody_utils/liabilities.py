@@ -15,11 +15,14 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from functools import cache
+from typing import TYPE_CHECKING
 
 from antibody_utils._data import load_toml
-from antibody_utils.numbering.anarcii import NumberedSequence
 from antibody_utils.numbering.positions import Chain, Position, Scheme
 from antibody_utils.regions import RegionSelector
+
+if TYPE_CHECKING:
+    from antibody_utils.numbering.anarcii import NumberedSequence
 
 __all__ = ["Liability", "find_liabilities"]
 
