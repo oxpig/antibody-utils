@@ -7,6 +7,8 @@ releases may change the API.
 
 ## Unreleased
 
+## 0.1.1 (2026-10-09)
+
 ## 0.1.0 (2026-10-08)
 
 The first release.  antibody-utils replaces the reusable parts of `ABDB`, the
