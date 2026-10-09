@@ -17,3 +17,13 @@ citing
 contributing
 api
 ```
+
+```{toctree}
+:hidden:
+:caption: Project links
+
+changelog
+GitHub <https://github.com/oxpig/antibody-utils>
+PyPI <https://pypi.org/project/antibody-utils/>
+Issues <https://github.com/oxpig/antibody-utils/issues>
+```
