@@ -6,10 +6,14 @@ and data it implements that your work relies on.
 ## antibody-utils
 
 antibody-utils is developed by the
-[Oxford Protein Informatics Group](https://opig.stats.ox.ac.uk/).  Releases
-will be archived on [Zenodo](https://zenodo.org/), with a DOI to cite, from
-the first release.  Until then, please cite the repository,
-<https://github.com/oxpig/antibody-utils>.
+[Oxford Protein Informatics Group](https://opig.stats.ox.ac.uk/).  Each
+release is archived on [Zenodo](https://zenodo.org/).  Cite antibody-utils
+with its DOI,
+[10.5281/zenodo.23242278](https://doi.org/10.5281/zenodo.23242278),
+which always resolves to the latest release.  Zenodo's page for it also lists
+a DOI for each version, if you need to cite the one you used.  The repository's
+`CITATION.cff` gives the same citation, and GitHub's **Cite this repository**
+button formats it in APA or BibTeX.
 
 ## Methods and data
 

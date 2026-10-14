@@ -8,6 +8,8 @@ abstract: >-
   Utilities for antibody sequence and structure analysis: numbering, region
   definitions, sequence comparison, VH/VL orientation and more.
 type: software
+# The concept DOI, which resolves to the latest version.
+doi: 10.5281/zenodo.23242278
 authors:
   - given-names: Benjamin Heathcote
     family-names: Williams

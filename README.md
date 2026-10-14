@@ -8,6 +8,7 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/antibody-utils)](https://pypi.org/project/antibody-utils/)
 [![Downloads](https://static.pepy.tech/badge/antibody-utils/month)](https://pepy.tech/projects/antibody-utils)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23242278.svg)](https://doi.org/10.5281/zenodo.23242278)
 [![Licence: BSD-3-Clause](https://img.shields.io/badge/licence-BSD--3--Clause-blue)](LICENCE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -74,9 +75,11 @@ and API reference.
 
 ## Citing
 
-If you use antibody-utils in published work, please cite it and the methods
-it implements; see [Citing](https://antibody-utils.readthedocs.io/en/latest/citing.html)
-in the documentation.
+If you use antibody-utils in published work, please cite it, using its DOI,
+[10.5281/zenodo.23242278](https://doi.org/10.5281/zenodo.23242278),
+and the methods it implements; see
+[Citing](https://antibody-utils.readthedocs.io/en/latest/citing.html) in the
+documentation.
 
 ## Contributing
 
