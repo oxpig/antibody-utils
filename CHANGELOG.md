@@ -7,7 +7,17 @@ releases may change the API.
 
 ## Unreleased
 
+### Added
+
+- The Zenodo DOI, 10.5281/zenodo.23242278, in `CITATION.cff`, the README and
+  the [Citing](https://antibody-utils.readthedocs.io/en/latest/citing.html) page.
+
 ## 0.1.1 (2026-10-09)
+
+### Added
+
+- Links in the documentation to the changelog, the GitHub repository, PyPI
+  and the issue tracker, and to each page's source.
 
 ## 0.1.0 (2026-10-08)
 
