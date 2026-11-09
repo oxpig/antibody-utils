@@ -7,6 +7,8 @@ releases may change the API.
 
 ## Unreleased
 
+## 0.1.2 (2026-11-09)
+
 ### Added
 
 - The Zenodo DOI, 10.5281/zenodo.23242278, in `CITATION.cff`, the README and
